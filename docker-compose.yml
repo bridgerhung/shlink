@@ -19,7 +19,7 @@ services:
             
     shlink:
         container_name: my_shlink
-        image: ghcr.io/shlinkio/shlink:stable
+        image: ghcr.io/shlinkio/shlink:stable-roadrunner
         restart: always
         depends_on:
             - shlink_db_postgres
