@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-TW">
     <head>
+        <!-- 預設語言 -->
         <title>名琮短網址</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="歡迎使用名琮的短網址服務，輕鬆縮短網址，簡單快速。">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="shortcut icon" href="/favicon.ico">
         <style>
@@ -15,51 +17,64 @@
         </style>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                // 取得瀏覽器語言
                 const userLang = navigator.language || navigator.userLanguage;
 
-                // 定義語言對應的內容
+                // 定義語言對應內容
                 const content = {
                     'zh-TW': {
+                        lang: 'zh-TW',
                         title: "名琮短網址",
                         heading: "歡迎使用名琮的短網址服務",
-                        
+                        meta: "歡迎使用名琮的短網址服務"
                     },
                     'en': {
-                        title: "Short URL",
-                        heading: "Welcome to Ming-Tsung's Short URL Service",
-                        
+                        lang: 'en',
+                        title: "Ming-Tsung URL Shortener",
+                        heading: "Welcome to Ming-Tsung's URL Shortening Service",
+                        meta: "Welcome to Ming-Tsung's URL Shortening Service"
                     },
                     'ja': {
-                        title: "短縮URL",
+                        lang: 'ja',
+                        title: "名琮の短縮URLサービス",
                         heading: "名琮の短縮URLサービスへようこそ",
-                        
+                        meta: "名琮の短縮URLサービスへようこそ。"
                     }
                 };
 
-                // 判斷顯示語言
+                // 判斷語言
                 let lang;
                 if (userLang === "en" || userLang === "en-US") {
-                    lang = "en";
+                    lang = 'en';
                 } else if (userLang === "ja") {
-                    lang = "ja";
+                    lang = 'ja';
                 } else {
-                    lang = "zh-TW";
+                    lang = 'zh-TW'; // 預設繁體中文
                 }
 
                 // 動態設置內容
+                document.documentElement.lang = content[lang].lang;
                 document.title = content[lang].title;
-                document.getElementById("heading").textContent = content[lang].heading;
-                document.getElementById("message").textContent = content[lang].message;
+                document.querySelector('h1').textContent = content[lang].heading;
+
+                // 修改 meta description
+                const metaDescription = document.querySelector('meta[name="description"]');
+                if (metaDescription) {
+                    metaDescription.setAttribute("content", content[lang].meta);
+                } else {
+                    const newMeta = document.createElement('meta');
+                    newMeta.name = "description";
+                    newMeta.content = content[lang].meta;
+                    document.head.appendChild(newMeta);
+                }
             });
         </script>
     </head>
     <body>
         <div class="app">
             <main class="container">
-                <h1 id="heading">歡迎使用名琮的短網址服務</h1>
-                
-                
+                <h1>歡迎使用名琮的短網址服務</h1>
+                <hr>
+                <p></p>
             </main>
         </div>
     </body>
