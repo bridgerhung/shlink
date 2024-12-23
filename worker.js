@@ -8,25 +8,27 @@ async function handleRequest(request) {
     request.headers.get("Accept-Language") || ""
   ).toLowerCase();
   let lang = "zh-TW";
-  if (acceptLang.startsWith("ja")) lang = "ja";
-  else if (acceptLang.startsWith("en")) lang = "en";
+
+  if (acceptLang.startsWith("ja")) {
+    lang = "ja";
+  } else if (acceptLang.startsWith("en")) {
+    lang = "en";
+  }
 
   if (url.pathname === "/invalid-short-code") {
     return new Response(buildInvalid(lang), {
-      headers: { "content-type": "text/html;charset=UTF-8" },
-    });
-  } else if (url.pathname === "/") {
-    // Decide if you want to return maintenance page or 404
-    // For example, here show 404
-    return new Response(build404(lang), {
       headers: { "content-type": "text/html;charset=UTF-8" },
     });
   } else if (url.pathname === "/maintenance") {
     return new Response(buildMaintenance(lang), {
       headers: { "content-type": "text/html;charset=UTF-8" },
     });
+  } else if (url.pathname === "/") {
+    return new Response(build404(lang), {
+      headers: { "content-type": "text/html;charset=UTF-8" },
+    });
   } else {
-    // Fallback to 404
+    // 其他未指定的路由也返回 404 頁面
     return new Response(build404(lang), {
       headers: { "content-type": "text/html;charset=UTF-8" },
     });
@@ -59,20 +61,33 @@ function buildInvalid(lang) {
   };
   const c = content[lang];
   return `<!DOCTYPE html>
-  <html lang="${lang}">
-  <head>
-    <meta charset="utf-8">
-    <title>${c.title}</title>
-    <meta name="description" content="${c.paragraph1}">
-  </head>
-  <body>
-    <h1>${c.heading}</h1>
-    <hr>
-    <p>${c.paragraph1}</p>
-    <p>${c.paragraph2}</p>
-    <p>${c.paragraph3}</p>
-  </body>
-  </html>`;
+<html lang="${lang}">
+<head>
+  <meta charset="utf-8">
+  <title>${c.title}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <style>
+    html, body {height: 100%}
+    .app {height: 100vh; display: flex; align-items: center; justify-content: center; flex-flow: column;}
+    p {margin-bottom: 20px;}
+    body {text-align: center;}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <main class="container">
+      <h1>${c.heading}</h1>
+      <hr>
+      <p>${c.paragraph1}</p>
+      <p>${c.paragraph2}</p>
+      <p>${c.paragraph3}</p>
+    </main>
+  </div>
+</body>
+</html>`;
 }
 
 function build404(lang) {
@@ -95,49 +110,79 @@ function build404(lang) {
   };
   const c = content[lang];
   return `<!DOCTYPE html>
-  <html lang="${lang}">
-  <head>
-    <meta charset="utf-8">
-    <title>${c.title}</title>
-    <meta name="description" content="${c.paragraph}">
-  </head>
-  <body>
-    <h1>${c.heading}</h1>
-    <hr>
-    <p>${c.paragraph}</p>
-  </body>
-  </html>`;
+<html lang="${lang}">
+<head>
+  <meta charset="utf-8">
+  <title>${c.title}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <style>
+    html, body {height: 100%}
+    .app {height: 100vh; display: flex; align-items: center; justify-content: center; flex-flow: column;}
+    p {margin-bottom: 20px;}
+    body {text-align: center;}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <main class="container">
+      <h1>${c.heading}</h1>
+      <hr>
+      <p>${c.paragraph}</p>
+    </main>
+  </div>
+</body>
+</html>`;
 }
+
 function buildMaintenance(lang) {
   const content = {
     "zh-TW": {
       title: "網站維護中",
       heading: "網站維護中",
-      paragraph: "請稍後再試，正在維護中。",
+      paragraph: "請稍等，我正在恢復服務，請稍後再試",
     },
     en: {
-      title: "Maintenance",
+      title: "Website Under Maintenance",
       heading: "Website Under Maintenance",
-      paragraph: "Please try again later. Our site is under maintenance.",
+      paragraph: "Please wait while we restore the service. Try again later.",
     },
     ja: {
-      title: "メンテナンス中",
-      heading: "メンテナンス中",
-      paragraph: "ただいまメンテナンス中です。後ほど再度お試しください。",
+      title: "ウェブサイトメンテナンス中",
+      heading: "ウェブサイトメンテナンス中",
+      paragraph: "サービスを復旧中です。後ほど再試行してください。",
     },
   };
   const c = content[lang];
   return `<!DOCTYPE html>
-  <html lang="${lang}">
-  <head>
-    <meta charset="utf-8">
-    <title>${c.title}</title>
-    <meta name="description" content="${c.paragraph}">
-  </head>
-  <body>
-    <h1>${c.heading}</h1>
-    <hr>
-    <p>${c.paragraph}</p>
-  </body>
-  </html>`;
+<html lang="${lang}">
+<head>
+  <meta charset="utf-8">
+  <title>${c.title}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <style>
+    html, body {height: 100%; margin: 0; font-family: Arial, sans-serif;}
+    .app {height: 100vh; display: flex; align-items: center; justify-content: center; flex-flow: column; background-color: #f8f9fa;}
+    h1 {color: #343a40; margin-bottom: 10px;}
+    p {color: #6c757d; margin-bottom: 20px; font-size: 1.2em;}
+    .spinner-border {margin-top: 20px; color: #007bff;}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <main class="container text-center">
+      <h1>${c.heading}</h1>
+      <p>${c.paragraph}</p>
+      <div class="spinner-border" role="status">
+        <span class="sr-only">載入中...</span>
+      </div>
+    </main>
+  </div>
+</body>
+</html>`;
 }
