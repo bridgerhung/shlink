@@ -173,6 +173,7 @@ function buildMaintenance(lang) {
     .spinner-border {margin-top: 20px; color: #007bff;}
   </style>
 </head>
+
 <body>
   <div class="app">
     <main class="container text-center">
@@ -180,6 +181,9 @@ function buildMaintenance(lang) {
       <p>${c.paragraph}</p>
       <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="好啦" data-bs-content="我很努力了，再等一下">快一點</button>
     </main>
+    var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+    container: 'body'
+    })
   </div>
 </body>
 </html>`;
