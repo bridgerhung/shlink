@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>無效網址 </title>
+        <title>無效網址</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,15 +13,56 @@
             p {margin-bottom: 20px;}
             body {text-align: center;}
         </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // 取得瀏覽器語言
+                const userLang = navigator.language || navigator.userLanguage;
+
+                // 預設語言內容
+                const content = {
+                    'zh-TW': {
+                        title: "無效網址",
+                        heading: "找不到網頁!",
+                        paragraph1: "歡迎使用名琮的短網址服務",
+                        paragraph2: "您所需要的網頁已經過期，或已經被刪除",
+                        paragraph3: "若有需要請與我聯絡"
+                    },
+                    'en': {
+                        title: "Invalid URL",
+                        heading: "Page Not Found!",
+                        paragraph1: "Welcome to Ming-Tsung's URL Shortening Service",
+                        paragraph2: "The page you are looking for has expired or been deleted.",
+                        paragraph3: "If necessary, please contact me."
+                    },
+                    'ja': {
+                        title: "無効なURL",
+                        heading: "ページが見つかりません!",
+                        paragraph1: "名琮の短縮URLサービスへようこそ",
+                        paragraph2: "お探しのページは期限切れか削除されています。",
+                        paragraph3: "必要であればご連絡ください。"
+                    }
+                };
+
+                // 根據語言切換內容
+                const defaultLang = 'zh-TW';
+                const lang = content[userLang] ? userLang : defaultLang;
+
+                document.title = content[lang].title;
+                document.getElementById("heading").textContent = content[lang].heading;
+                document.getElementById("paragraph1").textContent = content[lang].paragraph1;
+                document.getElementById("paragraph2").textContent = content[lang].paragraph2;
+                document.getElementById("paragraph3").textContent = content[lang].paragraph3;
+            });
+        </script>
     </head>
     <body>
         <div class="app">
             <main class="container">
-                <h1>找不到網頁!</h1>
+                <h1 id="heading">找不到網頁!</h1>
                 <hr>
-                <p>歡迎使用名琮的短網址服務</p>
-                <p>您所需要的網頁已經過期，或已經被刪除</p>
-                <p>若有需要請與我聯絡</p>
+                <p id="paragraph1">歡迎使用名琮的短網址服務</p>
+                <p id="paragraph2">您所需要的網頁已經過期，或已經被刪除</p>
+                <p id="paragraph3">若有需要請與我聯絡</p>
             </main>
         </div>
     </body>
