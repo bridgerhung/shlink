@@ -47,16 +47,16 @@ function buildInvalid(lang) {
     en: {
       title: "Invalid URL",
       heading: "Page Not Found!",
-      paragraph1: "Welcome to Ming-Tsung's URL Shortening Service",
-      paragraph2: "The page you are looking for has expired or been deleted.",
-      paragraph3: "If necessary, please contact me.",
+      paragraph1: "Welcome to Bridger's short URL service",
+      paragraph2: "The page you need has expired or has been deleted..",
+      paragraph3: "Please contact me if you need it.",
     },
     ja: {
       title: "無効なURL",
       heading: "ページが見つかりません!",
       paragraph1: "名琮の短縮URLサービスへようこそ",
-      paragraph2: "お探しのページは期限切れか削除されています。",
-      paragraph3: "必要であればご連絡ください。",
+      paragraph2: "お探しのページは古いか削除されています。",
+      paragraph3: "このサービスが必要な場合はご連絡ください。",
     },
   };
   const c = content[lang];
@@ -99,7 +99,7 @@ function build404(lang) {
     },
     en: {
       title: "Ming-Tsung URL Shortener",
-      heading: "Welcome to Ming-Tsung's URL Shortening Service",
+      heading: "Welcome to Bridger's URL Shortening Service",
       paragraph: "Page not found. Please check your URL.",
     },
     ja: {
