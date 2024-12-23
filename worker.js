@@ -21,6 +21,10 @@ async function handleRequest(request) {
     return new Response(build404(lang), {
       headers: { "content-type": "text/html;charset=UTF-8" },
     });
+  } else if (url.pathname === "/maintenance") {
+    return new Response(buildMaintenance(lang), {
+      headers: { "content-type": "text/html;charset=UTF-8" },
+    });
   } else {
     // Fallback to 404
     return new Response(build404(lang), {
@@ -87,6 +91,39 @@ function build404(lang) {
       title: "名琮の短縮URLサービス",
       heading: "名琮の短縮URLサービスへようこそ",
       paragraph: "ページが見つかりませんでした。URLをご確認ください。",
+    },
+  };
+  const c = content[lang];
+  return `<!DOCTYPE html>
+  <html lang="${lang}">
+  <head>
+    <meta charset="utf-8">
+    <title>${c.title}</title>
+    <meta name="description" content="${c.paragraph}">
+  </head>
+  <body>
+    <h1>${c.heading}</h1>
+    <hr>
+    <p>${c.paragraph}</p>
+  </body>
+  </html>`;
+}
+function buildMaintenance(lang) {
+  const content = {
+    "zh-TW": {
+      title: "網站維護中",
+      heading: "網站維護中",
+      paragraph: "請稍後再試，正在維護中。",
+    },
+    en: {
+      title: "Maintenance",
+      heading: "Website Under Maintenance",
+      paragraph: "Please try again later. Our site is under maintenance.",
+    },
+    ja: {
+      title: "メンテナンス中",
+      heading: "メンテナンス中",
+      paragraph: "ただいまメンテナンス中です。後ほど再度お試しください。",
     },
   };
   const c = content[lang];
