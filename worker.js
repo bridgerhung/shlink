@@ -152,7 +152,7 @@ function buildMaintenance(lang) {
       heading: "Website Under Maintenance",
       paragraph: "Please wait while we restore the service. Try again later.",
       button: "Hurry up",
-      button_content: "I'm really working hard",
+      button_content: "I am really working hard on it",
       button_title: "Fighting",
     },
     ja: {
