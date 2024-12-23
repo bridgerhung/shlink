@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
     <head>
         <title>無效網址</title>
         <meta charset="utf-8">
@@ -18,7 +18,7 @@
                 // 取得瀏覽器語言
                 const userLang = navigator.language || navigator.userLanguage;
 
-                // 預設語言內容
+                // 定義語言對應的內容
                 const content = {
                     'zh-TW': {
                         title: "無效網址",
@@ -43,10 +43,17 @@
                     }
                 };
 
-                // 根據語言切換內容
-                const defaultLang = 'zh-TW';
-                const lang = content[userLang] ? userLang : defaultLang;
+                // 判斷顯示語言
+                let lang;
+                if (userLang === "en" || userLang === "en-US") {
+                    lang = "en";
+                } else if (userLang === "ja") {
+                    lang = "ja";
+                } else {
+                    lang = "zh-TW";
+                }
 
+                // 動態設置內容
                 document.title = content[lang].title;
                 document.getElementById("heading").textContent = content[lang].heading;
                 document.getElementById("paragraph1").textContent = content[lang].paragraph1;
