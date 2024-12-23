@@ -156,12 +156,7 @@ function buildMaintenance(lang) {
     },
   };
   const c = content[lang];
-  var popover = new bootstrap.Popover(
-    document.querySelector(".example-popover"),
-    {
-      container: "body",
-    }
-  );
+
   return `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
@@ -186,6 +181,11 @@ function buildMaintenance(lang) {
       <h1>${c.heading}</h1>
       <p>${c.paragraph}</p>
       <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="好啦" data-bs-content="我很努力了，再等一下">快一點</button>
+        <script>
+      var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+      container: 'body'
+        })
+      </script>
     </main>
   </div>
 </body>
