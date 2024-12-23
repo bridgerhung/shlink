@@ -194,10 +194,10 @@ function buildMaintenance(lang) {
           type="button"
           class="btn btn-lg btn-danger example-popover"
           data-toggle="popover"
-          title=${c.button}
+          title=${c.button_title}
           data-content=${c.button_content}
         >
-        ${c.button_title}
+        ${c.button}
         </button>
       </main>
     </div>
