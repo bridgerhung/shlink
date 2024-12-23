@@ -1,99 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-  <head>
-    <!-- 預設語言 -->
-    <title>名琮短網址</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="歡迎使用名琮的短網址服務" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <style>
-      html,
-      body {
-        height: 100%;
-      }
-      .app {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-flow: column;
-      }
-      p {
-        margin-bottom: 20px;
-      }
-      body {
-        text-align: center;
-      }
-    </style>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const userLang = navigator.language || navigator.userLanguage;
-
-        // 定義語言對應內容
-        const content = {
-          "zh-TW": {
-            lang: "zh-TW",
-            title: "名琮短網址",
-            heading: "歡迎使用名琮的短網址服務",
-            meta: "歡迎使用名琮的短網址服務",
-          },
-          en: {
-            lang: "en",
-            title: "Ming-Tsung URL Shortener",
-            heading: "Welcome to Ming-Tsung's URL Shortening Service",
-            meta: "Welcome to Ming-Tsung's URL Shortening Service",
-          },
-          ja: {
-            lang: "ja",
-            title: "名琮の短縮URLサービス",
-            heading: "名琮の短縮URLサービスへようこそ",
-            meta: "名琮の短縮URLサービスへようこそ。",
-          },
-        };
-
-        // 判斷語言
-        let lang;
-        if (userLang === "en" || userLang === "en-US") {
-          lang = "en";
-        } else if (userLang === "ja") {
-          lang = "ja";
-        } else {
-          lang = "zh-TW"; // 預設繁體中文
-        }
-
-        // 動態設置內容
-        document.documentElement.lang = content[lang].lang;
-        document.title = content[lang].title;
-        document.querySelector("h1").textContent = content[lang].heading;
-
-        // 修改 meta description
-        const metaDescription = document.querySelector(
-          'meta[name="description"]'
-        );
-        if (metaDescription) {
-          metaDescription.setAttribute("content", content[lang].meta);
-        } else {
-          const newMeta = document.createElement("meta");
-          newMeta.name = "description";
-          newMeta.content = content[lang].meta;
-          document.head.appendChild(newMeta);
-        }
-      });
-    </script>
-  </head>
-  <body>
-    <div class="app">
-      <main class="container">
-        <h1>歡迎使用名琮的短網址服務</h1>
-        <hr />
-        <p></p>
-      </main>
-    </div>
-  </body>
+<html lang="zh">
+    <head>
+        <title>名琮短網址</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <style>
+            html, body {height: 100%}
+            .app {height: 100vh; display: flex; align-items: center; justify-content: center; flex-flow: column;}
+            p {margin-bottom: 20px;}
+            body {text-align: center;}
+        </style>
+    </head>
+    <body>
+        <div class="app">
+            <main class="container">
+                <h1>歡迎使用名琮的短網址服務</h1>
+                <hr>
+                <p></p>
+            </main>
+        </div>
+    </body>
 </html>
