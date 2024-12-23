@@ -143,16 +143,25 @@ function buildMaintenance(lang) {
       title: "網站維護中",
       heading: "網站維護中",
       paragraph: "請稍等，我正在恢復服務，請稍後再試",
+      button: "快一點",
+      button_content: "我真的很努力了",
+      button_title: "加油",
     },
     en: {
       title: "Website Under Maintenance",
       heading: "Website Under Maintenance",
       paragraph: "Please wait while we restore the service. Try again later.",
+      button: "Hurry up",
+      button_content: "I'm really working hard",
+      button_title: "Fighting",
     },
     ja: {
       title: "ウェブサイトメンテナンス中",
       heading: "ウェブサイトメンテナンス中",
       paragraph: "サービスを復旧中です。後ほど再試行してください。",
+      button: "急いで",
+      button_content: "私は本当に一生懸命にやっています",
+      button_title: "頑張って",
     },
   };
   const c = content[lang];
@@ -176,25 +185,37 @@ function buildMaintenance(lang) {
 </head>
 
 <body>
-  <div class="app">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <!-- Replace the existing Popover initialization script -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script>
-    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-      return new bootstrap.Popover(popoverTriggerEl)
-    })
-  </script>
-  </script>
-    <main class="container text-center">
-      <h1>${c.heading}</h1>
-      <p>${c.paragraph}</p>
-      <button type="button" class="btn btn-lg btn-danger example-popover" data-bs-toggle="加油" title="加油 title" data-bs-content="我真的很努力了">快一點</button>
-    </main>
-  </div>
+  <body>
+    <div class="app">
+      <main class="container text-center">
+        <h1>${c.heading}</h1>
+        <p>${c.paragraph}</p>
+        <button
+          type="button"
+          class="btn btn-lg btn-danger example-popover"
+          data-toggle="popover"
+          title=${c.button}
+          data-content=${c.button_content}
+        >
+        ${c.button_title}
+        </button>
+      </main>
+    </div>
+
+    <!-- Include jQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Initialize Popover -->
+    <script>
+      $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({
+          container: "body",
+        });
+      });
+    </script>
+  </body>
   
 </body>
 </html>`;
