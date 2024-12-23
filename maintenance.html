@@ -16,31 +16,42 @@
         </style>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
+                // 取得瀏覽器語言
                 const userLang = navigator.language || navigator.userLanguage;
+
+                // 定義語言對應的內容
                 const content = {
-                    "zh-TW": {
+                    'zh-TW': {
                         title: "網站維護中",
                         heading: "網站維護中",
-                        paragraph: "請稍等，我正在恢復服務，請稍後再試"
+                        message: "請稍等，我正在恢復服務，請稍後再試"
                     },
-                    "en": {
+                    'en': {
                         title: "Website Under Maintenance",
                         heading: "Website Under Maintenance",
-                        paragraph: "Please wait while we restore the service. Try again later."
+                        message: "Please wait, I am restoring the service. Please try again later."
                     },
-                    "ja": {
-                        title: "ウェブサイトメンテナンス中",
-                        heading: "ウェブサイトメンテナンス中",
-                        paragraph: "サービスを復旧中です。後ほど再試行してください。"
+                    'ja': {
+                        title: "ウェブサイトはメンテナンス中",
+                        heading: "ウェブサイトはメンテナンス中",
+                        message: "少々お待ちください。サービスを復旧中です。後ほどお試しください。"
                     }
                 };
 
-                const defaultLang = "zh-TW";
-                const lang = content[userLang] ? userLang : defaultLang;
+                // 判斷顯示語言
+                let lang;
+                if (userLang === "en" || userLang === "en-US") {
+                    lang = "en";
+                } else if (userLang === "ja") {
+                    lang = "ja";
+                } else {
+                    lang = "zh-TW";
+                }
 
+                // 動態設置內容
                 document.title = content[lang].title;
                 document.getElementById("heading").textContent = content[lang].heading;
-                document.getElementById("paragraph").textContent = content[lang].paragraph;
+                document.getElementById("message").textContent = content[lang].message;
             });
         </script>
     </head>
@@ -48,7 +59,7 @@
         <div class="app">
             <main class="container text-center">
                 <h1 id="heading">網站維護中</h1>
-                <p id="paragraph">請稍等，我正在恢復服務，請稍後再試</p>
+                <p id="message">請稍等，我正在恢復服務，請稍後再試</p>
                 <div class="spinner-border" role="status">
                     <span class="sr-only">載入中...</span>
                 </div>
