@@ -180,7 +180,7 @@ function buildMaintenance(lang) {
     <main class="container text-center">
       <h1>${c.heading}</h1>
       <p>${c.paragraph}</p>
-      <button type="button" class="btn btn-lg btn-danger example-popover" data-bs-toggle="popover" title="Popover title" data-bs-content="我真的很努力了">快一點r</button>
+      <button type="button" class="btn btn-lg btn-danger example-popover" data-bs-toggle="加油" title="加油 title" data-bs-content="我真的很努力了">快一點</button>
     </main>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
