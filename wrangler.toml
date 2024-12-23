@@ -2,5 +2,5 @@ name = "falling-dawn-c8bb"
 main = "worker.js"
 compatibility_date = "2023-10-15"
 routes = [
-  { pattern = "404.brid.pw/", custom_domain = true }
+  { pattern = "404.brid.pw", custom_domain = true }
 ]
