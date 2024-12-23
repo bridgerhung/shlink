@@ -180,18 +180,20 @@ function buildMaintenance(lang) {
     <main class="container text-center">
       <h1>${c.heading}</h1>
       <p>${c.paragraph}</p>
-      <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="好啦" data-bs-content="我很努力了，再等一下">快一點</button>
+      <button type="button" class="btn btn-lg btn-danger example-popover" data-bs-toggle="popover" title="Popover title" data-bs-content="我真的很努力了">快一點r</button>
     </main>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- Replace the existing Popover initialization script -->
-  <script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
   var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
   var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl)
   })
+</script>
 </script>
 </body>
 </html>`;
