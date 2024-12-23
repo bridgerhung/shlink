@@ -1,4 +1,4 @@
-name = "falling-dawn-c8bb"
+name = "shlink"
 main = "worker.js"
 compatibility_date = "2023-10-15"
 routes = [

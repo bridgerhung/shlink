@@ -178,7 +178,7 @@ function buildMaintenance(lang) {
     <main class="container text-center">
       <h1>${c.heading}</h1>
       <p>${c.paragraph}</p>
-      <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="快一點" data-bs-content="我很努力了，再等一下">快一點</button>
+      <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="好啦" data-bs-content="我很努力了，再等一下">快一點</button>
     </main>
   </div>
 </body>
