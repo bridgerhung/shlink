@@ -183,7 +183,10 @@ function buildMaintenance(lang) {
       <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="好啦" data-bs-content="我很努力了，再等一下">快一點</button>
     </main>
   </div>
-   <script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
       var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
       container: 'body'
         })
