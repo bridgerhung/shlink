@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/invalid-short-code.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "routes": [
     {
       "src": "/maintenance",
