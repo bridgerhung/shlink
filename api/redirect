@@ -1,0 +1,21 @@
+export default async function handler(req, res) {
+  const { code } = req.query;
+  
+  // 這裡可以加入你的短代碼驗證邏輯
+  // 如果是有效的短代碼，進行重定向
+  // 如果無效，顯示 invalid-short-code 頁面
+  
+  // 假設這是無效的短代碼情況
+  const invalidShortCodeHtml = await fetch(
+    `${req.headers.host}/invalid-short-code.html`
+  ).then(res => res.text());
+  
+  // 可以在 HTML 中動態插入短代碼
+  const modifiedHtml = invalidShortCodeHtml.replace(
+    '{{SHORT_CODE}}', 
+    code || ''
+  );
+  
+  res.setHeader('Content-Type', 'text/html');
+  res.status(404).send(modifiedHtml);
+}

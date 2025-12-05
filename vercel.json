@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "src": "/maintenance",
+      "dest": "/maintenance.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/invalid-short-code. html? code=$1"
+    }
+  ],
+  "errorPage": "/404.html"
+}

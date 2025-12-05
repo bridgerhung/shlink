@@ -1,0 +1,18 @@
+{
+  "functions": {
+    "api/redirect. js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/maintenance",
+      "dest": "/maintenance.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/redirect.js? code=$1"
+    }
+  ],
+  "errorPage": "/404.html"
+}
