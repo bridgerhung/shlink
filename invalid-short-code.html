@@ -5,53 +5,76 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap. min.css">
         <link rel="shortcut icon" href="/favicon.ico">
         <style>
             html, body {height: 100%}
             .app {height: 100vh; display: flex; align-items: center; justify-content: center; flex-flow: column;}
             p {margin-bottom: 20px;}
             body {text-align: center;}
+            .short-code {
+                background-color: #f8f9fa;
+                padding: 10px 15px;
+                border-radius: 5px;
+                font-family: monospace;
+                color: #dc3545;
+                margin: 10px 0;
+                display: inline-block;
+            }
         </style>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 // 取得瀏覽器語言
                 const userLang = navigator.language || navigator.userLanguage;
+                
+                // 取得無效的短代碼
+                const shortCode = window.INVALID_SHORT_CODE || '';
 
                 // 預設語言內容
                 const content = {
                     'zh-TW': {
                         title: "無效網址",
-                        heading: "找不到網頁!",
+                        heading: "找不到網頁! ",
                         paragraph1: "歡迎使用名琮的短網址服務",
-                        paragraph2: "您所需要的網頁已經過期，或已經被刪除",
+                        paragraph2: shortCode ? `短代碼 "${shortCode}" 已經過期，或已經被刪除` : "您所需要的網頁已經過期，或已經被刪除",
                         paragraph3: "若有需要請與我聯絡"
                     },
                     'en': {
                         title: "Invalid URL",
                         heading: "Page Not Found!",
                         paragraph1: "Welcome to Ming-Tsung's URL Shortening Service",
-                        paragraph2: "The page you are looking for has expired or been deleted.",
+                        paragraph2: shortCode ? `Short code "${shortCode}" has expired or been deleted. ` : "The page you are looking for has expired or been deleted.",
                         paragraph3: "If necessary, please contact me."
                     },
                     'ja': {
                         title: "無効なURL",
                         heading: "ページが見つかりません!",
                         paragraph1: "名琮の短縮URLサービスへようこそ",
-                        paragraph2: "お探しのページは期限切れか削除されています。",
+                        paragraph2: shortCode ?  `短縮コード「${shortCode}」は期限切れか削除されています。` : "お探しのページは期限切れか削除されています。",
                         paragraph3: "必要であればご連絡ください。"
                     }
                 };
 
                 // 根據語言切換內容
                 const defaultLang = 'zh-TW';
-                const lang = content[userLang] ? userLang : defaultLang;
+                const lang = content[userLang] ?  userLang : defaultLang;
 
                 document.title = content[lang].title;
-                document.getElementById("heading").textContent = content[lang].heading;
+                document.getElementById("heading").textContent = content[lang]. heading;
                 document.getElementById("paragraph1").textContent = content[lang].paragraph1;
-                document.getElementById("paragraph2").textContent = content[lang].paragraph2;
+                document. getElementById("paragraph2"). textContent = content[lang].paragraph2;
                 document.getElementById("paragraph3").textContent = content[lang].paragraph3;
+
+                // 如果有短代碼，顯示額外資訊
+                if (shortCode) {
+                    const shortCodeElement = document.createElement('div');
+                    shortCodeElement.className = 'short-code';
+                    shortCodeElement.textContent = shortCode;
+                    
+                    const paragraph2Element = document.getElementById("paragraph2");
+                    paragraph2Element. appendChild(document.createElement('br'));
+                    paragraph2Element.appendChild(shortCodeElement);
+                }
             });
         </script>
     </head>

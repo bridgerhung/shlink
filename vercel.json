@@ -5,9 +5,12 @@
       "dest": "/maintenance.html"
     },
     {
+      "src": "/invalid-short-code",
+      "dest": "/api/invalid-short-code"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/invalid-short-code. html? code=$1"
+      "dest": "/404.html"
     }
-  ],
-  "errorPage": "/404.html"
+  ]
 }
