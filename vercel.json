@@ -6,10 +6,10 @@
     },
     {
       "src": "/invalid-short-code",
-      "dest": "/api/invalid-short-code"
+      "dest": "/invalid-short-code. html"
     },
     {
-      "src": "/(.*)",
+      "src": "/",
       "dest": "/404.html"
     }
   ]
