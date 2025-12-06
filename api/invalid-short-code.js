@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     if (code) {
       const shortCodeScript = `
         <script>
-          window.INVALID_SHORT_CODE = "${code}";
+          window. INVALID_SHORT_CODE = "${code}";
         </script>
       `;
       html = html.replace('</head>', `${shortCodeScript}</head>`);
