@@ -2,5 +2,5 @@ name = "shlink"
 main = "worker.js"
 compatibility_date = "2023-10-15"
 routes = [
-  { pattern = "404.brid.pw", custom_domain = true }
+  { pattern = "no.brid.pw", custom_domain = true }
 ]
