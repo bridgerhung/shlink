@@ -6,11 +6,15 @@
     },
     {
       "src": "/invalid-short-code",
-      "dest": "/invalid-short-code. html"
+      "dest": "/invalid-short-code.html"
     },
     {
       "src": "/",
       "dest": "/404.html"
+    }
+    {
+      "src":"/1206",
+      "dest":"1206.html"
     }
   ]
 }
