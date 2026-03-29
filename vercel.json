@@ -9,12 +9,15 @@
       "dest": "/invalid-short-code.html"
     },
     {
-      "src": "/",
-      "dest": "/404.html"
+      "src": "/essay",
+      "dest": "/essay.html"
     },
     {
-      "src":"/essay",
-      "dest","essay.html"
+      "handle": "filesystem"
     },
+    {
+      "src": "/(.*)",
+      "dest": "/404.html"
+    }
   ]
 }
