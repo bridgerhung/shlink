@@ -15,6 +15,10 @@
     {
       "src":"/1206",
       "dest":"1206.html"
+    },
+    {
+      "src":"/essay",
+      "dest","/essay.html"
     }
   ]
 }
