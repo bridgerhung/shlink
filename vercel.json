@@ -13,6 +13,10 @@
       "dest": "/essay.html"
     },
     {
+      "src": "/hire",
+      "dest": "/hire.html"
+    },
+    {
       "handle": "filesystem"
     },
     {
